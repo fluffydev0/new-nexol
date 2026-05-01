@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 156 100% 50%;
+    --primary-foreground: 0 0% 2%;
+
+    --secondary: 263 86% 65%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 4% 65%;
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 156 100% 50%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 156 100% 50%;
+    --sidebar-primary-foreground: 0 0% 2%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 156 100% 50%;
+
+    --glow-green: 156 100% 50%;
+    --glow-violet: 263 86% 65%;
+
+    --font-display: 'Newsreader', serif;
+    --font-body: 'Manrope', sans-serif;
+
+    /* Landing page palette */
+    --cream: 30 33% 98%;
+    --ink: 0 0% 7%;
+    --navy: 222 70% 14%;
+    --navy-deep: 222 75% 10%;
+    --gold: 40 99% 73%;
+    --gold-deep: 40 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .glass-nav {
+    background: hsla(0, 0%, 5%, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsla(0, 0%, 100%, 0.06);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 60px 20px hsla(156, 100%, 50%, 0.08);
+  }
+
+  .glow-border {
+    border: 1px solid hsl(var(--border));
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .glow-border:hover {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 20px 2px hsla(156, 100%, 50%, 0.1);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .radial-glow {
+    background: radial-gradient(ellipse at center, hsla(156, 100%, 50%, 0.08) 0%, transparent 70%);
+  }
+
+  .ticker-scroll {
+    animation: ticker 30s linear infinite;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .bg-mesh {
+    background-color: hsl(var(--cream));
+    background-image:
+      radial-gradient(at 0% 0%, hsla(220, 75%, 90%, 0.35) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(40, 90%, 85%, 0.4) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(220, 75%, 90%, 0.2) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(40, 90%, 85%, 0.25) 0px, transparent 50%);
+  }
+
+  .premium-shadow {
+    box-shadow: 0 25px 50px -12px rgba(10, 26, 58, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.02);
+  }
+
+  .perspective-lg { perspective: 2000px; }
+
+  .floating { animation: floating 6s ease-in-out infinite; }
+  @keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .architect-grid-item {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .architect-grid-item:hover { transform: translateY(-6px); }
+}
